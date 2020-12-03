@@ -1,7 +1,12 @@
-import '../styles/globals.css'
+import React from 'react'
+import {MDXProvider} from '@mdx-js/react'
 
-function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+const mdComponents = {
+  h1: props => <h1 style={{color: 'darkgreen'}} {...props} />
 }
 
-export default MyApp
+export default ({Component, pageProps}) => (
+  <MDXProvider components={mdComponents}>
+    <Component {...pageProps} />
+  </MDXProvider>
+)
